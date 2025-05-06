@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Organ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Image Reconstruction And Tumor Detection</h1>
+    <p>Click an organ to upload MRI image and process</p>
+</header>
+
+<section class="organ-grid">
+    <a href="/upload/brain" class="organ-box">
+        <h2>Brain</h2>
+        <img src="{{ url_for('static', filename='images/brain.jpg') }}" alt="Brain">
+    </a>
+    <a href="/upload/liver" class="organ-box">
+        <h2>Liver</h2>
+        <img src="{{ url_for('static', filename='images/liver.jpg') }}" alt="Liver">
+    </a>
+    <a href="/upload/pancreas" class="organ-box">
+        <h2>Pancreas</h2>
+        <img src="{{ url_for('static', filename='images/pancreas.jpg') }}" alt="Pancreas">
+    </a>
+    <a href="/upload/kidney" class="organ-box">
+        <h2>Kidney</h2>
+        <img src="{{ url_for('static', filename='images/kidney.jpg') }}" alt="Kidney">
+    </a>
+</section>
+
+</body>
+</html>
