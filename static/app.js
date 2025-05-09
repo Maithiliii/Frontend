@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const imageInput = document.getElementById("imageInput");
+    const resultsSection = document.getElementById("resultsSection");
+    const loadingIndicator = document.getElementById("loading");
 
     window.processImage = function (organ) {
         const file = imageInput.files[0];
@@ -11,7 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const formData = new FormData();
         formData.append("image", file);
 
-        document.getElementById("loading").classList.remove("hidden");
+        loadingIndicator.classList.remove("hidden");
+
+        resultsSection.classList.add("hidden");
 
         fetch(`/process/${organ}`, {
             method: "POST",
@@ -19,15 +23,25 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(response => response.json())
             .then(data => {
-                document.getElementById("loading").classList.add("hidden");
-                document.getElementById("originalImage").src = data.original;
-                document.getElementById("originalImage").classList.remove("hidden");
-                document.getElementById("denoisedImage").src = data.denoised;
-                document.getElementById("denoisedImage").classList.remove("hidden");
+                loadingIndicator.classList.add("hidden");
+
+                resultsSection.classList.remove("hidden");
+
+                const originalImage = document.getElementById("originalImage");
+                originalImage.src = data.original;
+                originalImage.classList.remove("hidden");
+
+                const denoisedImage = document.getElementById("denoisedImage");
+                denoisedImage.src = data.denoised;
+                denoisedImage.classList.remove("hidden");
+
+                const predictionBox = document.getElementById("predictionBox");
+                predictionBox.innerText = `Predicted: ${data.prediction}`;
+                predictionBox.classList.remove("hidden");
             })
             .catch(error => {
                 alert("Error processing image!");
                 console.error(error);
             });
-    }
+    };
 });
