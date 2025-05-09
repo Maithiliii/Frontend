@@ -91,32 +91,33 @@ button {
 .hidden {
     display: none;
 }
+
 .organ-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px; /* ~1.5cm */
-    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
     margin: 60px auto;
-    padding: 0;
-    justify-content: center; /* Center the whole grid */
+    flex-wrap: wrap;
 }
 
 .organ-box {
     background: #ffffff;
     border: 2px solid #1e3c72;
-    border-radius: 12px;
+    border-radius: 16px;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     text-decoration: none;
     color: #1e3c72;
     transition: transform 0.3s ease, background 0.3s;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    font-size: 1.5rem;
 }
 
 .organ-box:hover {
@@ -130,8 +131,22 @@ button {
 }
 
 .organ-box img {
-    width: 90px;
-    height: 90px;
+    width: 130px;
+    height: 130px;
     object-fit: contain;
     margin-top: 10px;
+}
+
+.classification-box {
+    background-color: #ffffff;
+    border: 2px solid #1e3c72;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1.2em;
+    width: 5cm;
+    height: 3cm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
