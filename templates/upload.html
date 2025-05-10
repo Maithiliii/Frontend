@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <title>{{ organ|capitalize }} MRI Upload</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .hidden {
+            display: none;
+        }
+        .result-image {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
 <header>
