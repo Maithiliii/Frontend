@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const formData = new FormData();
         formData.append("image", file);
 
+        // Show loading
         loadingIndicator.classList.remove("hidden");
-
         resultsSection.classList.add("hidden");
 
         fetch(`/process/${organ}`, {
@@ -24,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 loadingIndicator.classList.add("hidden");
-
-                resultsSection.classList.remove("hidden");
 
                 const originalImage = document.getElementById("originalImage");
                 originalImage.src = data.original;
@@ -38,8 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 const predictionBox = document.getElementById("predictionBox");
                 predictionBox.innerText = `Predicted: ${data.prediction}`;
                 predictionBox.classList.remove("hidden");
+
+                resultsSection.classList.remove("hidden");
             })
             .catch(error => {
+                loadingIndicator.classList.add("hidden");
                 alert("Error processing image!");
                 console.error(error);
             });
